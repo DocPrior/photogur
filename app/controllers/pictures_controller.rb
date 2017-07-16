@@ -1,6 +1,8 @@
 class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
+    @picture = Picture.new
+    @pictures.order(:created_at)
   end
 
   def show

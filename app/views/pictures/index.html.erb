@@ -16,5 +16,25 @@
                 <a href="javascript:void(0)" class="active-state-trigger button button-primary">Add to Deck</a>
             </div>
         <% end %>
+
+        <h1>Add a new picture</h1>
+
+        <%= form_for @picture do |f| %>
+          <p>
+            <%= f.label :artist %><br>
+            <%= f.text_field :artist %>
+          </p>
+          <p>
+            <%= f.label :title %><br>
+            <%= f.text_field :title %>
+          </p>
+          <p>
+            <%= f.label :url %><br>
+            <%= f.text_field :url %>
+          </p>
+          <p>
+            <%= f.submit "Save" %>
+          </p>
+        <% end %>
     </div>
 </section>
