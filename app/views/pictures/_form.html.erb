@@ -1,6 +1,6 @@
 <h1>Add a new picture</h1>
 
-<%= form_for @picture do |f| %>
+<%= form_for @picture, remote: true do |f| %>
   <p>
     <%= f.label :artist %><br>
     <%= f.text_field :artist %>

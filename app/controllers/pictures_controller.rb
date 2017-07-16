@@ -2,7 +2,7 @@ class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
     @picture = Picture.new
-    @pictures.order(:created_at)
+    Picture.order(:created_at)
   end
 
   def show
@@ -22,6 +22,23 @@ class PicturesController < ApplicationController
     else
       # otherwise render the view associated with the action :new (i.e. new.html.erb)
       render :new
+    end
+
+    if request.xhr?
+      respond_to do |format|
+        format.html do
+          if @picture.save
+            redirect_to pictures_path
+          else
+            render :index
+          end
+        end
+        format.json do
+          if @picture.save
+            render json: @picture
+          end
+        end
+      end
     end
   end
 
