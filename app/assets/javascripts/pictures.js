@@ -4,6 +4,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   var cardList = document.querySelectorAll('.card');
   var activeButton = document.querySelectorAll('.active-state-trigger.button.button-primary');
+    var count = 0;
   for (var i = 0; i < activeButton.length; i++){
     var button = activeButton[i];
     button.addEventListener('click', function(e) {
@@ -13,13 +14,24 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-      // var countDeck = document.querySelector('.deck-count');
-      //   var count = 0;
-      // function upCount() {
-      //     count += 1
-      //     return count
-      // }
-      // countDeck.innerHTML = upCount();
+
+
+  function upCount() {
+      count += 1
+      return count
+  }
+
+
+  for (var x = 0; x < activeButton.length; x++) {
+    var button = activeButton[x];
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        var countDeck = document.querySelector('#deckCount');
+        countDeck.innerHTML = upCount()
+    })
+  }
+
+
 
 
 })
