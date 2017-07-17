@@ -1,8 +1,7 @@
 class PicturesController < ApplicationController
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order(created_at: :desc)
     @picture = Picture.new
-    Picture.order(:created_at)
   end
 
   def show
@@ -33,11 +32,7 @@ class PicturesController < ApplicationController
             render :index
           end
         end
-        format.json do
-          if @picture.save
-            render json: @picture
-          end
-        end
+        format.js
       end
     end
   end
